@@ -69,10 +69,10 @@ const App = () => {
       <Content>
         <Input value={currentNumber}/>
           <Row>
-            <Button label='x'/>
-            <Button label='/'/>
             <Button label='C' onClick={() => handleOnClear()}/>
-            <Button label='=' onClick={handleEquals}/>
+            <Button label='0' onClick={() => handleAddNumber('0')}/>
+            <Button label='×'/>
+            <Button label='÷' />
           </Row>
           <Row>
             <Button label='7' onClick={() => handleAddNumber('7')}/>
@@ -90,7 +90,7 @@ const App = () => {
             <Button label='1' onClick={() => handleAddNumber('1')}/>
             <Button label='2' onClick={() => handleAddNumber('2')}/>
             <Button label='3' onClick={() => handleAddNumber('3')}/>
-            <Button label='0' onClick={() => handleAddNumber('0')}/>            
+            <Button label='=' onClick={handleEquals}/>            
           </Row>
       </Content>
     </Container>
