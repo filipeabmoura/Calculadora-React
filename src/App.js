@@ -150,9 +150,9 @@ const App = () => {
           handleDivisionNumbers();
           break;
         case '.':
-          handleAddPoint();
+          handleAddPoint(key);
           break;
-        case 'Escape' || 'Delete':
+        case 'Delete':
           handleOnClear();
           break;
         default:
