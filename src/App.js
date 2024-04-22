@@ -10,12 +10,27 @@ const App = () => {
   const [firstNumber, setFirstNumber] = useState(0);
   const [operation, setOperation] = useState('');
 
+  const handleAdd = (contentToAdd) => {
+    setCurrentNumber(prev => `${prev === '0' ? '' : prev}${contentToAdd}`);
+  }
+
   const handleAddNumber = (num) => {
-    setCurrentNumber(prev => `${prev === '0' ? '' : prev}${num}`);
+    handleAdd(num);
+  }
+
+  const handleAddPoint = (point) => {
+    if(! currentNumber.includes('.')){
+      handleAdd(point);
+    }
   }
 
   const handleOnClear = () => {
     setCurrentNumber('0');
+    setFirstNumber('0');
+    setOperation('');
+  }
+
+  const handleClearAfterOperation = () => {
     setFirstNumber('0');
     setOperation('');
   }
@@ -28,7 +43,7 @@ const App = () => {
     } else {
       const result = Number(firstNumber) + Number(currentNumber);
       setCurrentNumber(String(result));
-      setOperation('');
+      handleClearAfterOperation();
     }
   }
 
@@ -40,7 +55,7 @@ const App = () => {
     } else {
       const result = Number(firstNumber) - Number(currentNumber);
       setCurrentNumber(String(result));
-      setOperation('');
+      handleClearAfterOperation();
     }
   }
 
@@ -52,7 +67,7 @@ const App = () => {
     } else {
       const result = Number(firstNumber) * Number(currentNumber);
       setCurrentNumber(String(result));
-      setOperation('');
+      handleClearAfterOperation();
     }
   }
 
@@ -64,7 +79,7 @@ const App = () => {
     } else {
       const result = Number(firstNumber) / Number(currentNumber);
       setCurrentNumber(String(result));
-      setOperation('');
+      handleClearAfterOperation();
     }
   }
 
@@ -99,9 +114,12 @@ const App = () => {
   return (
     <Container>
       <Content>
-        <Input value={currentNumber}/>
           <Row>
             <Button label='C' onClick={() => handleOnClear()}/>
+            <Input value={currentNumber}/>
+          </Row>
+          <Row>
+            <Button label='.' onClick={() => handleAddPoint('.')}/>
             <Button label='0' onClick={() => handleAddNumber('0')}/>
             <Button label='×' onClick={handleTimesNumbers}/>
             <Button label='÷' onClick={handleDivisionNumbers}/>
