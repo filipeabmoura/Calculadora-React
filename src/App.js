@@ -3,7 +3,7 @@ import Button from './components/Button';
 
 
 import { Container, Content, Row } from "./styles";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const App = () => {
   const [currentNumber, setCurrentNumber] = useState('0');
@@ -115,6 +115,59 @@ const App = () => {
       }
     } 
   }
+
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const { key } = event;
+
+      switch (key) {
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+          handleAddNumber(key);
+          break;
+        case 'Enter':
+          handleEquals();
+          break;
+        case '+':
+          handleSumNumbers();
+          break;
+        case '-':
+          handleMinus();
+          break;
+        case '*':
+          handleTimesNumbers();
+          break;
+        case '/':
+          handleDivisionNumbers();
+          break;
+        case '.':
+          handleAddPoint();
+          break;
+        case 'Escape' || 'Delete':
+          handleOnClear();
+          break;
+        default:
+          break;
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  });
+
+
 
   return (
     <Container>

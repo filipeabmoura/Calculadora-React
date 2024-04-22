@@ -4,6 +4,7 @@ export const InputContainer = styled.div`
     width: 75%;
     height: 100%;
     background-color: #BBBBBB;
+    border: 1px solid #000000;
 
     display: flex;
     align-items: center;
@@ -16,7 +17,7 @@ export const InputContainer = styled.div`
         width: 100%;
         height: 65px;
         background-color: #BBBBBB;
-        border: 2px solid #000000;
+        
         padding 0 10px;
 
         font-size: 24px;
