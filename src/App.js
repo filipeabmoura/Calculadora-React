@@ -43,6 +43,15 @@ const App = () => {
     }
   }
 
+  const handleMinus = () => {
+    if(currentNumber !== '' && currentNumber !== '0'){
+      handleMinusNumbers();
+    } else {
+      //add minus simbol to negative number
+      setCurrentNumber('-');
+    }
+  }
+
   const handleMinusNumbers = () => {
     if(firstNumber === '0'){
       setFirstNumber(String(currentNumber));
@@ -90,7 +99,7 @@ const App = () => {
           break;
 
         case '-':
-          handleMinusNumbers();
+          handleMinus();
           break;
         
         case '×':
@@ -124,7 +133,7 @@ const App = () => {
             <Button label='7' onClick={() => handleAddNumber('7')}/>
             <Button label='8' onClick={() => handleAddNumber('8')}/>
             <Button label='9' onClick={() => handleAddNumber('9')}/>
-            <Button label='-' onClick={handleMinusNumbers}/>
+            <Button label='-' onClick={handleMinus}/>
           </Row>
           <Row>
             <Button label='4' onClick={() => handleAddNumber('4')}/>
