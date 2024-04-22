@@ -6,21 +6,17 @@ import { Container, Content, Row } from "./styles";
 import { useState } from 'react'
 
 const App = () => {
-  const [currentNumber, setCurrentNumber] = useState(0);
-  const [firstNumber, setFirstNumber] = useState(0);
+  const [currentNumber, setCurrentNumber] = useState('0');
+  const [firstNumber, setFirstNumber] = useState('0');
   const [operation, setOperation] = useState('');
 
-  const handleAdd = (contentToAdd) => {
-    setCurrentNumber(prev => `${prev === '0' ? '' : prev}${contentToAdd}`);
-  }
-
   const handleAddNumber = (num) => {
-    handleAdd(num);
+    setCurrentNumber(prev => `${prev === '0' ? '' : prev}${num}`);
   }
 
   const handleAddPoint = (point) => {
-    if(! currentNumber.includes('.')){
-      handleAdd(point);
+    if(!currentNumber.includes('.')){
+      setCurrentNumber(prev => `${prev === '' ? '0.' : prev}${point}`);;
     }
   }
 
